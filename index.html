@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🏆 Torneo FC Mobile</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <h1 class="logo">Torneo FC Mobile</h1>
+            <nav>
+                <button class="nav-button" onclick="mostrarSeccion('registro')">Registrarse</button>
+                <button class="nav-button" onclick="mostrarSeccion('calendario')">Calendario</button>
+                <button class="nav-button" onclick="mostrarSeccion('tabla')">Tabla de Posiciones</button>
+                <button class="nav-button" id="botonAdmin">Admin</button>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main-container">
+        <section id="registro" class="contenedor">
+            <h2>Registro de Jugadores</h2>
+            <div id="registro-jugador" class="form-container">
+                <input type="text" id="nombreJugador" placeholder="Nombre de perfil FC Mobile" required>
+                <input type="text" id="codigoRegistro" placeholder="Código de registro" required>
+                <button class="cta-button" onclick="registrarJugador()">Registrarme</button>
+                <p id="mensaje-registro" class="mensaje"></p>
+            </div>
+        </section>
+
+        <section id="calendario" class="contenedor" style="display:none;">
+            <h2>Calendario de Partidos</h2>
+            <div class="table-scroll">
+                <table id="tabla-calendario" class="styled-table">
+                    <thead>
+                        <tr>
+                            <th>Fecha</th>
+                            <th>Hora</th>
+                            <th>Jugador A</th>
+                            <th>Resultado</th>
+                            <th>Jugador B</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </section>
+
+        <section id="tabla" class="contenedor" style="display:none;">
+            <h2>Tabla de Posiciones</h2>
+            <div class="table-scroll">
+                <table id="tabla-posiciones" class="styled-table">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Nombre</th>
+                            <th>PJ</th>
+                            <th>PG</th>
+                            <th>PE</th>
+                            <th>PP</th>
+                            <th>GF</th>
+                            <th>GC</th>
+                            <th>DG</th>
+                            <th>Puntos</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </section>
+
+        <section id="admin" class="contenedor admin-seccion" style="display:none;">
+            <h2>Sección de Administración</h2>
+
+            <div id="admin-secciones">
+                <div class="admin-panel">
+                    <h3>Generar Códigos de Registro</h3>
+                    <button class="cta-button" onclick="generarCodigo()">Generar Nuevo Código</button>
+                    <div class="codes-list">
+                        <h4>Códigos existentes</h4>
+                        <ul id="lista-codigos"></ul>
+                    </div>
+                </div>
+                
+                <div class="admin-panel">
+                    <h3>Registrar Partido</h3>
+                    <div class="form-group">
+                        <select id="jugadorA"></select>
+                        <span class="vs-label">vs</span>
+                        <select id="jugadorB"></select>
+                    </div>
+                    <div class="form-group">
+                        <input type="date" id="fechaPartido">
+                        <input type="time" id="horaPartido">
+                    </div>
+                    <button class="cta-button" onclick="registrarPartido()">Programar Partido</button>
+                    <p id="mensaje-partido" class="mensaje"></p>
+                </div>
+
+                <div class="admin-panel">
+                    <h3>Registrar Resultado</h3>
+                    <div class="form-group">
+                        <select id="partidosPendientes"></select>
+                    </div>
+                    <div class="form-group">
+                        <input type="number" id="golesA" placeholder="Goles A" min="0">
+                        <input type="number" id="golesB" placeholder="Goles B" min="0">
+                    </div>
+                    <button class="cta-button" onclick="registrarResultado()">Guardar Resultado</button>
+                    <p id="mensaje-resultado" class="mensaje"></p>
+                </div>
+
+                <div class="admin-panel">
+                    <h3>Gestión de Jugadores</h3>
+                    <div class="codes-list">
+                        <ul id="lista-jugadores"></ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
